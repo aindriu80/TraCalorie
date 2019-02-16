@@ -155,6 +155,11 @@ const AppCtrl = (function(Item, UICtrl) {
     document
       .querySelector(UISelectors.addBtn)
       .addEventListener("click", itemAddSubmit);
+
+    // Edit icon click event
+    document
+      .querySelector(UISelectors.itemList)
+      .addEventListener("click", itemUpdateSubmit);
   };
 
   // Add item submit
@@ -177,6 +182,16 @@ const AppCtrl = (function(Item, UICtrl) {
 
       // Clear fields
       UICtrl.clearInput();
+    }
+    e.preventDefault();
+  };
+
+  // Update item submit
+  const itemUpdateSubmit = function(e) {
+    if (e.target.classList.contains("edit-item")) {
+      // Get list item (item-0, item-1)
+      const listId = e.target.parentNode.parentNode.id;
+      console.log(listId);
     }
     e.preventDefault();
   };
