@@ -50,6 +50,9 @@ deleteItemFromStorage:function(id){
     }
   });
   localStorage.setItem('items', JSON.stringify(items));
+},
+clearItemsFromStorage: function(){
+  localStorage.removeItem('items');
 }
 }
 })();
@@ -445,6 +448,9 @@ const AppCtrl = (function(Item,StorageCtrl, UICtrl) {
   const clearAllItemsClick = function(){
     // Delete All items from data structure
     ItemCtrl.clearAllItems(); 
+
+    // Clear from local Storage
+    StorageCtrl.clearItemsFromStorage();
 
     // Get total calories
     const totalCalories = ItemCtrl.getTotalCalories();
